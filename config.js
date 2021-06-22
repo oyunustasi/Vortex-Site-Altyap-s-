@@ -14,40 +14,40 @@ module.exports = {
     },
 
     server: {
-        id: "SERVER ID",
+        id: "818192263079002163",
         roles: {
-            yonetici: "ADMINISTRATOR ROLE ID",
-            moderator: "MODERATOR ROLE ID",
+            yonetici: "841423581387685890",
+            moderator: "841710349303808020",
             profile: {
-                booster: "",
-                sponsor: "",
-                supporter: "",
-                partnerRole: ""
+                booster: "841579647896780820",
+                sponsor: "841579892843741225",
+                supporter: "841580172871598092",
+                partnerRole: "856799134672224266"
             },
             codeshare: {
-                javascript: "JS",
-                html: "HTML",
-                altyapilar: "substructure",
-                bdfd: "BDFD",
-                besdavet: "5 INVITES",
-                ondavet: "10 INVITES",
-                onbesdavet: "15 INVITES",
-                yirmidavet: "20 INVITES"
+                javascript: "841577207087890453",
+                html: "841577763201613854",
+                altyapilar: "841577775688974336",
+                bdfd: "841579334661832724",
+                besdavet: "841578490197573672",
+                ondavet: "841578505586212894",
+                onbesdavet: "841578510203486228",
+                yirmidavet: "841578513772969985"
             },
             botlist: {
-                developer: "",
-                certified_developer: "",
-                bot: "",
-                certified_bot: ""
+                developer: "841580627056394281",
+                certified_developer: "841580636472999937",
+                bot: "841581055991087115",
+                certified_bot: "841581110390947840"
             }
         },
         channels: {
-            codelog: "CODE-LOG",
-            login: "LOGIN-LOG",
-            webstatus: "WEBSITE-STATUS",
-            uptimelog: "UPTIME-LOG",
-            botlog: "BOT-LOG",
-            votes: "VOTE-LOG"
+            codelog: "841598454228320256",
+            login: "841697860902846514",
+            webstatus: "841697375457247272",
+            uptimelog: "841697277278289940",
+            botlog: "841696807494877256",
+            votes: "841697141289910322"
         }
     }
 
