@@ -6,8 +6,8 @@
 <div class="container">
   <br><br>
 <div class="column">
-    <p class="has-text-white title is-large"><i class="fa fa-badge-check has-text-warning"></i>&nbsp;Certified Bots</p>
-    <p class="content has-text-white" style="margin-top: -20px;">They are ranked according to the votes they received.</p>
+    <p class="has-text-white title is-large"><i class="fa fa-badge-check has-text-warning"></i>&nbsp;Sertifikalı Botlar</p>
+    <p class="content has-text-white" style="margin-top: -20px;">Aldıkları oylara göre sıralanıyorlar..</p>
     <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
         <% botdata.filter(a => a.certificate == "Certified").sort((a, b) => b.votes - a.votes).slice(0, 6).map(a => {%>
       <div class="col-md-6 col-lg-4 pb-3">
@@ -19,8 +19,8 @@
           </div>
           <div class="card-body">
            <div class="is-pulled-right mt-vcodes mt-1">
-            <span data-tooltip="Total Votes" data-tooltip-location="left" class="badge badge-stats mb-vcodes mt-1 w-100"><i class="fad fa-chevron-up"></i>&nbsp;<%= a.votes || "0" %></span>
-            <span data-tooltip="Server Count" data-tooltip-location="left" class="badge badge-stats mt-1 w-100"><i class="fad fa-server"></i>&nbsp;<%= a.serverCount || "N/A" %></span>
+            <span data-tooltip="Toplam Oy" data-tooltip-location="left" class="badge badge-stats mb-vcodes mt-1 w-100"><i class="fad fa-chevron-up"></i>&nbsp;<%= a.votes || "0" %></span>
+            <span data-tooltip="Sunucu Sayısı" data-tooltip-location="left" class="badge badge-stats mt-1 w-100"><i class="fad fa-server"></i>&nbsp;<%= a.serverCount || "N/A" %></span>
               </div>
             <h4 translate="no" class="card-title"><%= a.username %>
             <% if(a.certificate === "Certified") { %>
@@ -30,8 +30,8 @@
             <p translate="no" class="card-text vCodesbotDesc"><%= a.shortDesc %></p>
           </div>
           <div class="card-footer">
-            <a href="/bot/<%=a.botID%>" class="btn btn-tag btn-bot">View</a>
-            <a href="https://discord.com/oauth2/authorize?client_id=<%=a.botID%>&scope=bot&permissions=8" class="btn btn-tag btn-bot">Invite</a>
+            <a href="/bot/<%=a.botID%>" class="btn btn-tag btn-bot">Görüntüle</a>
+            <a href="https://discord.com/oauth2/authorize?client_id=<%=a.botID%>&scope=bot&permissions=8" class="btn btn-tag btn-bot">Davet Et</a>
           </div>
         </div>
       </div>
@@ -46,8 +46,8 @@
   <% } %>
 <br><br><br><br>
 <div class="column">
-    <p class="has-text-white title is-large"><i class="fad fa-fire has-text-danger"></i>&nbsp;Most Popular Bots</p>
-    <p class="content has-text-white" style="margin-top: -20px;">They are ranked according to the votes they received.</p>
+    <p class="has-text-white title is-large"><i class="fad fa-fire has-text-danger"></i>&nbsp;En Popüler Botlar</p>
+    <p class="content has-text-white" style="margin-top: -20px;">Aldıkları oylara göre sıralanıyorlar..</p>
   </div>
   <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
     <% botdata.sort((a, b) => b.votes - a.votes).slice(0, 6).filter(a => a.status == "Approved").map(a => {%>
