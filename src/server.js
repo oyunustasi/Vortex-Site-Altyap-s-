@@ -341,11 +341,11 @@ module.exports = async (client) => {
                     .setAuthor(a.username, a.avatarURL({
                         dynamic: true
                     }))
-                    .setDescription("New link added uptime system.")
+                    .setDescription("Yeni Uptime.")
                     .setThumbnail(client.user.avatarURL)
                     .setColor("GREEN")
-                    .addField("User;", `${a.tag} \`(${a.id})\``, true)
-                    .addField("Uptime Code;", updcode, true)
+                    .addField("Kullanıcı;", `${a.tag} \`(${a.id})\``, true)
+                    .addField("Uptime Kod;", updcode, true)
                     .addField("Uptime Limit;", `${dd.length+1}/10`, true)
                 )
                 new uptimedata({
@@ -356,7 +356,7 @@ module.exports = async (client) => {
                     code: updcode
                 }).save();
             })
-            res.redirect('?success=true&message=Link başarıyla sisteme.');
+            res.redirect('?success=true&message=Link başarıyla sisteme eklendi.');
         }
     })
     app.get("/uptime/links", checkMaintence, checkAuth, async (req, res) => {
@@ -374,12 +374,12 @@ module.exports = async (client) => {
         const dde = await uptimedata.findOne({
             code: req.params.code
         });
-        if (!dde) return res.redirect('/uptime/links?error=true&message=There is no such site in the system.')
+        if (!dde) return res.redirect('/uptime/links?error=true&message=Böyle bir site yok.')
         uptimedata.findOne({
             'code': req.params.code
         }, async function(err, docs) {
-            if (docs.userID != req.user.id) return res.redirect('/uptime/links?error=true&message=The link you tried to delete does not belong to you.');
-            res.redirect('/uptime/links?success=true&message=The link has been successfully deleted from the system.');
+            if (docs.userID != req.user.id) return res.redirect('/uptime/links?error=true&message=Eklenmiş linklerden birini silmelisin.');
+            res.redirect('/uptime/links?success=true&message=Link başarıyla sistemden silindi.');
             await uptimedata.deleteOne({
                 code: req.params.code
             });
@@ -479,10 +479,10 @@ module.exports = async (client) => {
         let botdata = await botsdata.findOne({
             botID: req.params.botID
         });
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz");
         if (req.user) {
             if (!req.user.id === botdata.ownerID || req.user.id.includes(botdata.coowners)) {
-                if (botdata.status != "Approved") return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+                if (botdata.status != "Approved") return res.redirect("/error?code=404&message=Bot id geçersiz.");
             }
         }
         renderTemplate(res, req, "botlist/vote.ejs", {
@@ -501,7 +501,7 @@ module.exports = async (client) => {
             user: req.user.id,
             bot: req.params.botID
         })
-        if (x) return res.redirect("/error?code=400&message=You can vote every 12 hours.");
+        if (x) return res.redirect("/error?code=400&message=12 saate bir defa oy verebilirsin.");
         await votes.findOneAndUpdate({
             bot: req.params.botID,
             user: req.user.id
@@ -520,8 +520,8 @@ module.exports = async (client) => {
                 votes: 1
             }
         })
-        client.channels.cache.get(channels.votes).send(`**${req.user.username}** voted **${botdata.username}** **\`(${botdata.votes + 1} votes)\`**`)
-        return res.redirect(`/bot/${req.params.botID}/vote?success=true&message=You voted successfully. You can vote again after 12 hours.`);
+        client.channels.cache.get(channels.votes).send(`**${req.user.username}** adlı kullanıcı **${botdata.username}** adlı bota oy verdi **\`(${botdata.votes + 1} votes)\ oy oldu`**`)
+        return res.redirect(`/bot/${req.params.botID}/vote?success=true&message=Oy başarıyla verildi. 12 saat sonra tekrar oy verebilirsin.`);
         renderTemplate(res, req, "botlist/vote.ejs", {
             req,
             roles,
@@ -535,11 +535,11 @@ module.exports = async (client) => {
         let botvarmi = await botsdata.findOne({
             botID: rBody['botID']
         });
-        if (botvarmi) return res.redirect('/error?code=404&message=The bot you are trying to add exists in the system.');
+        if (botvarmi) return res.redirect('/error?code=404&message=Eklemeye çalıştığınız bot sistemde mevcut.');
 
         client.users.fetch(req.body.botID).then(async a => {
-            if (!a.bot) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
-            if (!a) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+            if (!a.bot) return res.redirect("/error?code=404&message=Bot id geçersiz.");
+            if (!a) return res.redirect("/error?code=404&message=Bot id geçersiz.");
             if (rBody['coowners']) {
                 if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=You can add up to 3 CO-Owners..")
                 if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=You cannot add yourself to other CO-Owners.");
