@@ -520,7 +520,7 @@ module.exports = async (client) => {
                 votes: 1
             }
         })
-        client.channels.cache.get(channels.votes).send(`**${req.user.username}** adlı kullanıcı **${botdata.username}** adlı bota oy verdi **\`(${botdata.votes + 1} votes)\ oy oldu`**`)
+        client.channels.cache.get(channels.votes).send(`**${req.user.username}** adlı kullanıcı **${botdata.username}** adlı bota oy verdi`)\`(${botdata.votes + 1} votes)\ oy oldu`)
         return res.redirect(`/bot/${req.params.botID}/vote?success=true&message=Oy başarıyla verildi. 12 saat sonra tekrar oy verebilirsin.`);
         renderTemplate(res, req, "botlist/vote.ejs", {
             req,
