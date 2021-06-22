@@ -700,7 +700,7 @@ module.exports = async (client) => {
                 roles
             });
         } else {
-            res.redirect("/error?code=404&message=To edit this bot, you must be one of its owners.");
+            res.redirect("/error?code=404&message=Botu sadece sahibi düzenleyebilir.");
         }
     });
 
@@ -710,8 +710,8 @@ module.exports = async (client) => {
         let botdata = await botsdata.findOne({
             botID: req.params.botID
         })
-        if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=You can add up to 3 CO-Owners..")
-        if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=You cannot add yourself to other CO-Owners.");
+        if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=3 tane sahip ekleyebilirsiniz.")
+        if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=Kendini diğer sahiplere ekleyemezsiniz.");
         await botsdata.findOneAndUpdate({
             botID: req.params.botID
         }, {
@@ -730,8 +730,8 @@ module.exports = async (client) => {
             }
         }, function(err, docs) {})
         client.users.fetch(req.params.botID).then(a => {
-            client.channels.cache.get(channels.botlog).send(`<@${req.user.id}> edited **${a.tag}**`)
-            res.redirect(`?success=true&message=Your bot has been successfully edited.&botID=${req.params.botID}`)
+            client.channels.cache.get(channels.botlog).send(`<@${req.user.id}> düzenlendi **${a.tag}**`)
+            res.redirect(`?success=true&message=Bot başarıyla düzenlendi.&botID=${req.params.botID}`)
         })
     })
 
@@ -745,10 +745,10 @@ module.exports = async (client) => {
                 botID: req.params.botID,
                 ownerID: botdata.ownerID
             })
-            return res.redirect(`/user/${req.user.id}?success=true&message=Bot succesfully deleted.`)
+            return res.redirect(`/user/${req.user.id}?success=true&message=Bot başarıyla silindi.`)
 
         } else {
-            return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+            return res.redirect("/error?code=404&message=Bot id geçersiz.");
         }
     })
 
@@ -781,11 +781,11 @@ module.exports = async (client) => {
             botID: rBody['bot'],
             future: rBody['future']
         }).save();
-        res.redirect("/bots?success=true&message=Certificate application applied.&botID=" + rBody['bot'])
+        res.redirect("/bots?success=true&message=Sertifika başvurusu yapıldı.&botID=" + rBody['bot'])
         let botdata = await botsdata.findOne({
             botID: rBody['bot']
         })
-        client.channels.cache.get(channels.botlog).send(`User **${req.user.username}** requested a certificate for her bot named **${botdata.username}**.`)
+        client.channels.cache.get(channels.botlog).send(`${req.user.username} adlı kullanıcı ${botdata.username} adlı bot için sertifika isteğinde bulundu.`)
     });
     //
     const checkAdmin = async (req, res, next) => {
@@ -793,7 +793,7 @@ module.exports = async (client) => {
             if (client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(roles.yonetici) || client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(roles.moderator)) {
                 next();
             } else {
-                res.redirect("/error?code=403&message=You is not competent to do this.")
+                res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.")
             }
         } else {
             req.session.backURL = req.url;
@@ -850,7 +850,7 @@ module.exports = async (client) => {
         const botdata = await botsdata.findOne({
             botID: req.params.botID
         })
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz");
         await botsdata.findOneAndUpdate({
             botID: req.params.botID
         }, {
@@ -860,8 +860,8 @@ module.exports = async (client) => {
             }
         }, function(err, docs) {})
         client.users.fetch(req.params.botID).then(bota => {
-            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}>'s bot named **${bota.tag}** has been approved. `)
-            client.users.cache.get(botdata.ownerID).send(`Your bot named **${bota.tag}** has been approved.`)
+            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}> adlı kullanıcının ${bota.tag} adlı botu onaylandı. `)
+            client.users.cache.get(botdata.ownerID).send(`${bota.tag} adlı bot onaylandı.`)
         });
         let guild = client.guilds.cache.get(config.server.id)
         guild.members.cache.get(botdata.botID).roles.add(roles.botlist.bot);
@@ -871,14 +871,14 @@ module.exports = async (client) => {
                 guild.members.cache.get(a).roles.add(roles.botlist.developer);
             })
         }
-        return res.redirect(`/admin/unapproved?success=true&message=Bot approved.`)
+        return res.redirect(`/admin/unapproved?success=true&message=Bot onaylandı.`)
     });
     // DELETE BOT
     app.get("/admin/delete/:botID", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
         const botdata = await botsdata.findOne({
             botID: req.params.botID
         })
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz.");
         let guild = client.guilds.cache.get(config.server.id)
         guild.members.cache.get(botdata.botID).roles.remove(roles.bot);
         await guild.members.cache.get(botdata.botID).kick();
@@ -886,14 +886,14 @@ module.exports = async (client) => {
             botID: req.params.botID,
             ownerID: botdata.ownerID
         })
-        return res.redirect(`/admin/approved?success=true&message=Bot deleted.`)
+        return res.redirect(`/admin/approved?success=true&message=Bot silindi.`)
     });
     // DECLINE BOT
     app.get("/admin/decline/:botID", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
         const botdata = await botsdata.findOne({
             botID: req.params.botID
         })
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz.");
         renderTemplate(res, req, "admin/decline.ejs", {
             req,
             roles,
@@ -907,14 +907,14 @@ module.exports = async (client) => {
             botID: req.params.botID
         });
         client.users.fetch(botdata.ownerID).then(sahip => {
-            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}>'s bot named **${botdata.username}** has been declined. `)
-            client.users.cache.get(botdata.ownerID).send(`Your bot named **${botdata.username}** has been declined.\nReason: **${rBody['reason']}**\nAuthorized: **${req.user.username}**`)
+            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}> adlı kullanıcının ${botdata.username} adlı botu reddedildi. `)
+            client.users.cache.get(botdata.ownerID).send(`${botdata.username} adlı bot reddedildi.\nSebep: **${rBody['reason']}**\nYetkili: ${req.user.username}`)
         })
         await botsdata.deleteOne({
             botID: req.params.botID,
             ownerID: botdata.ownerID
         })
-        return res.redirect(`/admin/unapproved?success=true&message=Bot declined.`)
+        return res.redirect(`/admin/unapproved?success=true&message=Bot reddedildi.`)
     });
 
     // CERTIFICATE
@@ -940,8 +940,8 @@ module.exports = async (client) => {
         });
 
         client.users.fetch(botdata.botID).then(bota => {
-            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}>'s bot named **${bota.tag}** has been granted a certificate.`)
-            client.users.cache.get(botdata.ownerID).send(`Your bot named **${bota.tag}** has been certified.`)
+            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}> adlı kullanıcının ${bota.tag} adlı botuna sertifika verildi`)
+            client.users.cache.get(botdata.ownerID).send(`${bota.tag} adl.`)
         });
         await appsdata.deleteOne({
             botID: req.params.botID
