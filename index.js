@@ -55,7 +55,7 @@ client.on('ready',async () => {
     console.log("(!) Bot "+client.user.tag+" olarak başarıyla discorda bağlandı.");
     let botsSchema = require("./src/database/models/botlist/bots.js");
     const bots = await botsSchema.find();
-    client.user.setPresence({ activity: { type: 'WATCHING', name: 'vcodes.xyz | '+bots.length+' bots' }, status: "dnd" });
+    client.user.setPresence({ activity: { type: 'WATCHING', name: 'Vortex Botlist & CodeShare | '+bots.length+' bots' }, status: "dnd" });
 })
 /*=======================================================================================*/
 
@@ -129,5 +129,5 @@ client.on("guildMemberAdd", async (member) => {
 /*=======================================================================================*/
 require("./src/server.js")(client);
 require("./src/database/connect.js")(client);
-client.login(config.bot.token);
+client.login(process.env.token);
 /*=======================================================================================*/

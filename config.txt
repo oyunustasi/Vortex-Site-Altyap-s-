@@ -14,14 +14,14 @@ module.exports = {
     },
 
     server: {
-        id: "",
+        id: "818192263079002163",
         roles: {
-            yonetici: "",
-            moderator: "",
+            yonetici: "841423581387685890",
+            moderator: "841710349303808020",
             profile: {
-                booster: "",
-                sponsor: "",
-                supporter: "",
+                booster: "841579647896780820",
+                sponsor: "841579892843741225",
+                supporter: "841580172871598092",
                 partnerRole: ""
             },
             codeshare: {
