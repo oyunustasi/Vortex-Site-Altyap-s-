@@ -146,12 +146,12 @@ module.exports = async (client) => {
                     dynamic: true
                 })).setThumbnail(a.avatarURL({
                     dynamic: true
-                })).setColor("RED").setDescription(`[**${a.username}**#${a.discriminator}](https://vcodes.xyz/user/${a.id}) isimli kullanıcı **siteye** giriş yapmaya çalıştı fakat siteden engellendiği için giriş yapamadı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
+                })).setColor("RED").setDescription(`[${a.username}#${a.discriminator}](https://vortex-botlistcodeshare.glitch.me/user/${a.id}) isimli kullanıcı siteye giriş yapmaya çalıştı fakat siteden engellendiği için giriş yapamadı.`).addField("Kullanıcı Adı", a.username).addField("Kullanıcı ID", a.id).addField("Kullanıcı Etiket", a.discriminator))
             })
             req.session.destroy(() => {
                 res.json({
                     login: false,
-                    message: "You have been blocked from vCodes.",
+                    message: "Vortex Botlist & CodeShare'den engellendiniz.",
                     logout: true
                 })
                 req.logout();
@@ -176,7 +176,7 @@ module.exports = async (client) => {
                     dynamic: true
                 })).setThumbnail(a.avatarURL({
                     dynamic: true
-                })).setColor("GREEN").setDescription(`[**${a.username}**#${a.discriminator}](https://vcodes.xyz/user/${a.id}) isimli kullanıcı **siteye** giriş yaptı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
+                })).setColor("GREEN").setDescription(`[${a.username}#${a.discriminator}](https://vortex-botlistcodeshare.glitch.me/user/${a.id}) isimli kullanıcı siteye giriş yaptı.`).addField("Kullanıcı Adı", a.username).addField("Kullanıcı ID", a.id).addField("Kullanıcı Etiket", a.discriminator))
 
             })
         }
@@ -207,10 +207,10 @@ module.exports = async (client) => {
         });
     });
     app.get("/dc", (req, res) => {
-        res.redirect('https://discord.gg/z7dBzygse4');
+        res.redirect('https://discord.gg/Ep6W4RdXzZ');
     });
     app.get("/discord", (req, res) => {
-        res.redirect('https://discord.gg/z7dBzygse4');
+        res.redirect('https://discord.gg/Ep6W4RdXzZ');
     });
     app.get("/error", (req, res) => {
         renderTemplate(res, req, "pages/error.ejs", {
@@ -256,31 +256,31 @@ module.exports = async (client) => {
         let koddata = await codesSchema.findOne({
             code: kod
         })
-        if (!koddata) return res.redirect('/codes?error=true&message=You entered an invalid code.')
+        if (!koddata) return res.redirect('/codes?error=true&message=Kod geçersiz.')
         if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=To do this, you have to join our discord server.");
         if (koddata.codeCategory == "javascript") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.javascript)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.javascript)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "html") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.html)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.html)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "subs") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.altyapilar)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.altyapilar)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "5invites") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.besdavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.besdavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "10invites") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.ondavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.ondavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "15invites") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.onbesdavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.onbesdavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "20invites") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.yirmidavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(config.server.roles.codeshare.yirmidavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         if (koddata.codeCategory == "bdfd") {
-            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(rconfig.server.roles.codeshare.bdfd)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+            if (!client.guilds.cache.get(config.server.id).members.cache.get(req.user.id).roles.cache.get(rconfig.server.roles.codeshare.bdfd)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkili değilsin.");
         }
         renderTemplate(res, req, "codeshare/codeview.ejs", {
             req,
@@ -323,9 +323,9 @@ module.exports = async (client) => {
     app.post("/uptime/add", checkMaintence, checkAuth, async (req, res) => {
         const rBody = req.body;
         if (!rBody['link']) {
-            res.redirect('?error=true&message=Write a any link.')
+            res.redirect('?error=true&message=Link yaz.')
         } else {
-            if (!rBody['link'].match('https')) return res.redirect('?error=true&message=You must enter a valid link.')
+            if (!rBody['link'].match('https')) return res.redirect('?error=true&message=Geçerli link girmelisin.')
             const updcode = makeidd(5);
             const dde = await uptimedata.findOne({
                 link: rBody['link']
@@ -333,9 +333,9 @@ module.exports = async (client) => {
             const dd = await uptimedata.find({
                 userID: req.user.id
             });
-            if (dd.length > 9) res.redirect('?error=true&message=Your uptime limit has reached.')
+            if (dd.length > 9) res.redirect('?error=true&message=Uptime limit doldu')
 
-            if (dde) return res.redirect('?error=true&message=This link already exists in the system.')
+            if (dde) return res.redirect('?error=true&message=Link sistemden sil.')
             client.users.fetch(req.user.id).then(a => {
                 client.channels.cache.get(channels.uptimelog).send(new Discord.MessageEmbed()
                     .setAuthor(a.username, a.avatarURL({
@@ -356,7 +356,7 @@ module.exports = async (client) => {
                     code: updcode
                 }).save();
             })
-            res.redirect('?success=true&message=Your link has been successfully added to the uptime system.');
+            res.redirect('?success=true&message=Link başarıyla sisteme.');
         }
     })
     app.get("/uptime/links", checkMaintence, checkAuth, async (req, res) => {
