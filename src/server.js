@@ -93,13 +93,13 @@ module.exports = async (client) => {
                     if (usercheck.roles.cache.get(roles.yonetici)) {
                         next();
                     } else {
-                        res.redirect('/error?code=200&message=Our website is temporarily unavailable.')
+                        res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor.')
                     }
                 } else {
-                    res.redirect('/error?code=200&message=Our website is temporarily unavailable.')
+                    res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor.')
                 }
             } else {
-                res.redirect('/error?code=200&message=Our website is temporarily unavailable.')
+                res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor.')
             }
         } else {
             next();
@@ -135,7 +135,7 @@ module.exports = async (client) => {
             prompt: 'none'
         }));
     app.get("/callback", passport.authenticate("discord", {
-        failureRedirect: "/error?code=999&message=We encountered an error while connecting."
+        failureRedirect: "/error?code=999&message=Bağlanırken bir hatayla karşılaştık."
     }), async (req, res) => {
         let banned = await banSchema.findOne({
             user: req.user.id
