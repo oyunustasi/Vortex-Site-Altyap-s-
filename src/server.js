@@ -1164,7 +1164,7 @@ module.exports = async (client) => {
         }, function(error, server) {
             if (error) console.log(error)
         });
-        return res.redirect('../admin/maintence?success=true&message=Maintenance mode has been shut down successfully.');
+        return res.redirect('../admin/maintence?success=true&message=Başarıyla bakım moduna geçildi.');
     });
     app.get("/admin/userban", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
         if (!config.bot.owners.includes(req.user.id)) return res.redirect('../admin');
@@ -1183,7 +1183,7 @@ module.exports = async (client) => {
             sebep: req.body.reason,
             yetkili: req.user.id
         }).save()
-        return res.redirect('../admin/userban?success=true&message=User banned.');
+        return res.redirect('../admin/userban?success=true&message=Kullanıcı yasaklandı');
     });
     app.post("/admin/userunban", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
         if (!config.bot.owners.includes(req.user.id)) return res.redirect('../admin');
@@ -1192,7 +1192,7 @@ module.exports = async (client) => {
         }, function(error, user) {
             if (error) console.log(error)
         })
-        return res.redirect('../admin/userban?success=true&message=User ban removed.');
+        return res.redirect('../admin/userban?success=true&message=Kullanıcının yasağı kalktı.');
     });
 
     app.get("/admin/partners", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
@@ -1222,7 +1222,7 @@ module.exports = async (client) => {
         if (x) {
             x.roles.add(roles.profile.partnerRole)
         }
-        return res.redirect('/admin/partners?success=true&message=Partner added.')
+        return res.redirect('/admin/partners?success=true&message=Partner eklendi.')
     });
     //---------------- ADMIN ---------------\\
 
@@ -1284,7 +1284,7 @@ module.exports = async (client) => {
         }, {
             upsert: true
         })
-        return res.redirect('?success=true&message=Your profile has been successfully edited.');
+        return res.redirect('?success=true&message=Profil başarıyla düzenlendi.');
     });
     //------------------- PROFILE -------------------//
     app.set('json spaces', 1)
@@ -1300,7 +1300,7 @@ module.exports = async (client) => {
             botID: req.params.botID
         })
         if (!botinfo) return res.json({
-            "error": "You entered invalid bot id."
+            "error": "Bot id geçersiz."
         })
         res.json({
             avatar: botinfo.avatar,
@@ -1324,16 +1324,16 @@ module.exports = async (client) => {
     app.get("/api/bots/check/:userID", async (req, res) => {
         let token = req.header('Authorization');
         if (!token) return res.json({
-            "error": "You must enter a bot token."
+            "error": "bot token gir."
         })
         if (!req.params.userID) return res.json({
-            "error": "You must enter a user id."
+            "error": "kullanıcı id gir."
         })
         const botdata = await botsdata.findOne({
             token: token
         })
         if (!botdata) return res.json({
-            "error": "You entered an invalid bot token."
+            "error": "bot token geçersiz."
         })
         const vote = await voteSchema.findOne({
             bot: botdata.botID,
@@ -1352,13 +1352,13 @@ module.exports = async (client) => {
     app.post("/api/bots/stats", async (req, res) => {
         let token = req.header('Authorization');
         if (!token) return res.json({
-            "error": "You must enter a bot token."
+            "error": "bot token gir."
         })
         const botdata = await botsdata.findOne({
             token: token
         })
         if (!botdata) return res.json({
-            "error": "You entered an invalid bot token."
+            "error": "bot token geçersiz."
         })
         if (botdata) {
             return await botsdata.update({
