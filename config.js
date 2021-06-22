@@ -2,15 +2,15 @@ module.exports = {
     bot: {
         token: "",
         prefix: "-",
-        owners: [""],
-        mongourl: "MONGODB URL"
+        owners: ["552154968426283024"],
+        mongourl: "mongodb+srv://oyun_ustasi:yunusctn34@botlistcodeshare.xgdqp.mongodb.net/BotlistCodeShare?retryWrites=true&w=majority"
     },
 
     website: {
-        callback: "https://your-domain.com/callback",
-        secret: "CLIENT SECRET",
-        clientID: "CLIENT ID",
-        tags: [ "Moderation", "Fun", "Minecraft","Economy","Guard","NSFW","Anime","Invite","Music","Logging", "Web Dashboard", "Reddit", "Youtube", "Twitch", "Crypto", "Leveling", "Game", "Roleplay", "Utility", "Turkish" ]    
+        callback: "https://vortex-botlistcodeshare.glitch.me/callback",
+        secret: "rPwOeQ6UymoJkqRJihU58w3zprFa4t7v",
+        clientID: "841265518458699797",
+        tags: [ "Moderasyon", "Eğlence", "Minecraft","Ekonomi","Güvenlik","Level","Anime","Davet","Müzik","Karşılama", "Web Gösterge Paneli", "Reddit", "Youtube", "Twitch", "Kripto", "Logo", "Oyun", "Teknoloji", "Fortnite", "Türkçe" ]    
     },
 
     server: {
