@@ -24,16 +24,16 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav mainlink mr-auto">
             <li class="nav-item">
-              <a class="nav-link nvhome" href="/"><i class="fad fa-home mr-1"></i> Home</a>
+              <a class="nav-link nvhome" href="/"><i class="fad fa-home mr-1"></i> Ana Menü</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/bots"><i class="fad fa-robot mr-1"></i> Bots</a>
+              <a class="nav-link" href="/bots"><i class="fad fa-robot mr-1"></i> Botlar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/certification"><i class="fad fa-badge-check mr-1"></i> Certification</a>
+                <a class="nav-link" href="/certification"><i class="fad fa-badge-check mr-1"></i> Sertifika</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/partners"><i class="fad fa-handshake mr-1"></i> Partners</a>
+                <a class="nav-link" href="/partners"><i class="fad fa-handshake mr-1"></i> Partnerler</a>
             </li>
             <% if(user) { %>
                 <% 
@@ -54,18 +54,18 @@
                     <img src="https://cdn.discordapp.com/avatars/<%=user.id%>/<%=user.avatar%>" class="nav-userProfile-image"/><b><%=user.username%></b><small>#<%=user.discriminator%></small>
                   </a>
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" style="max-width:220px!important;">
-                    <a class="dropdown-item" href="/user/<%=user.id %>/"><i class="fa fa-id-card mr-2"></i> Profile</a>
-                    <a class="dropdown-item" href="/addbot"><i class="fa fa-paper-plane mr-2"></i> Submit Bot</a>
-                    <a class="dropdown-item" href="/codes"><i class="fa fa-code mr-2"></i> Code Share</a>
+                    <a class="dropdown-item" href="/user/<%=user.id %>/"><i class="fa fa-id-card mr-2"></i> Profil</a>
+                    <a class="dropdown-item" href="/addbot"><i class="fa fa-paper-plane mr-2"></i> Bot Ekle</a>
+                    <a class="dropdown-item" href="/codes"><i class="fa fa-code mr-2"></i> Kod Paylaş</a>
                     <a class="dropdown-item" href="/uptime/links"><i class="fa fa-sync-alt mr-2"></i> Uptime</a>
                   
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item dropdown-danger" href="/logout"><i class="fad fa-sign-out mr-2"></i> Logout</a>
+                  <a class="dropdown-item dropdown-danger" href="/logout"><i class="fad fa-sign-out mr-2"></i> Çıkış Yap</a>
                 </div>
               </li>
             <% } else { %>
             <li class="nav-item">
-                <a class="btn btn-discord nav-link" href="/login"><i class="fad fa-user mr-1"></i> Login</a>
+                <a class="btn btn-discord nav-link" href="/login"><i class="fad fa-user mr-1"></i> Giriş Yap</a>
             </li>
 	    <% } %>
           </ul>
