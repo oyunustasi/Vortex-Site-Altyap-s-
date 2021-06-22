@@ -941,7 +941,7 @@ module.exports = async (client) => {
 
         client.users.fetch(botdata.botID).then(bota => {
             client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}> adlı kullanıcının ${bota.tag} adlı botuna sertifika verildi`)
-            client.users.cache.get(botdata.ownerID).send(`${bota.tag} adl.`)
+            client.users.cache.get(botdata.ownerID).send(`${bota.tag} adlı bota sertifika verildi.`)
         });
         await appsdata.deleteOne({
             botID: req.params.botID
@@ -956,13 +956,13 @@ module.exports = async (client) => {
                 }
             })
         }
-        return res.redirect(`/admin/certificate-apps?success=true&message=Certificate gived.&botID=${req.params.botID}`)
+        return res.redirect(`/admin/certificate-apps?success=true&message=Sertifika verildi.&botID=${req.params.botID}`)
     });
     app.get("/admin/certificate/delete/:botID", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
         const botdata = await botsdata.findOne({
             botID: req.params.botID
         })
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz");
         renderTemplate(res, req, "admin/certificate-delete.ejs", {
             req,
             roles,
@@ -983,8 +983,8 @@ module.exports = async (client) => {
             botID: req.params.botID
         });
         client.users.fetch(botdata.botID).then(bota => {
-            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}>'s bot named **${bota.tag}** has not been granted a certificate.`)
-            client.users.cache.get(botdata.ownerID).send(`Your bot named **${bota.tag}** certificate application has been declined.\nReason: **${rBody['reason']}**`)
+            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}> adlı kullanıcının ${bota.tag} adlı botuna sertifika verilmedi.`)
+            client.users.cache.get(botdata.ownerID).send(`${bota.tag} adlı bota sertifika verilmedi.\nSebep: **${rBody['reason']}**`)
         });
         await appsdata.deleteOne({
             botID: req.params.botID
@@ -992,7 +992,7 @@ module.exports = async (client) => {
         let guild = client.guilds.cache.get(config.server.id)
         guild.members.cache.get(botdata.botID).roles.remove(roles.botlist.certified_bot);
         guild.members.cache.get(botdata.ownerID).roles.remove(roles.botlist.certified_developer);
-        return res.redirect(`/admin/certificate-apps?success=true&message=Certificate deleted.`)
+        return res.redirect(`/admin/certificate-apps?success=true&message=Sertifika silindi.`)
     });
 
     // CODE SHARE
@@ -1041,11 +1041,11 @@ module.exports = async (client) => {
             });
         }
         client.channels.cache.get(channels.codelog).send(new Discord.MessageEmbed()
-            .setTitle("New code added!").setColor("GREEN").setFooter(config.footer)
-            .setDescription(`The user named **[${req.user.username}](https://vcodes.xyz/user/${req.user.id})** added the code named **${rBody['codename']}** to the system.`)
-            .addField("Code Link", `https://vcodes.xyz/code/${kod}`, true)
-            .addField("Code Description", rBody['codedesc'], true)
-            .addField("Code Category", rBody['category'], true)
+            .setTitle("Kod Eklendi").setColor("GREEN").setFooter(config.footer)
+            .setDescription(`[${req.user.username}](https://vortex-botlistcodeshare.glitch.me/user/${req.user.id}) adlı kullanıcı ${rBody['codename']} adlı kodu siteye ekledi.`)
+            .addField("Kod Link", `https://vortex-botlistcodeshare.glitch.me/code/${kod}`, true)
+            .addField("Kod Açıklama", rBody['codedesc'], true)
+            .addField("Kod Kategori", rBody['category'], true)
         )
         res.redirect('/code/' + kod)
     });
@@ -1056,7 +1056,7 @@ module.exports = async (client) => {
         let koddata = await codesSchema.findOne({
             code: kod
         })
-        if (!koddata) return res.redirect('/codes?error=true&message=You entered an invalid code.')
+        if (!koddata) return res.redirect('/codes?error=true&message=Kod geçersiz.')
         renderTemplate(res, req, "admin/editcode.ejs", {
             req,
             roles,
@@ -1079,11 +1079,11 @@ module.exports = async (client) => {
             }
         }, function(err, docs) {})
         client.channels.cache.get(channels.codelog).send(new Discord.MessageEmbed()
-            .setTitle("Code edited!").setColor("GREEN").setFooter(config.footer)
-            .setDescription(`The user named **[${req.user.username}](https://vcodes.xyz/user/${req.user.id})** edited the code named **${rBody['codename']}**.`)
-            .addField("Code Link", `https://vcodes.xyz/code/${kod}`, true)
-            .addField("Code Description", rBody['codedesc'], true)
-            .addField("Code Category", rBody['category'], true)
+            .setTitle("Kod düzenlendi").setColor("GREEN").setFooter(config.footer)
+            .setDescription(`[${req.user.username}](https://vortex-botlistcodeshare.glitch.me/user/${req.user.id}) adlı kullanıcı ${rBody['codename']} adlı kodu düzenledi.`)
+            .addField("Kod Link", `https://vcodes.xyz/code/${kod}`, true)
+            .addField("Kod Açıklama", rBody['codedesc'], true)
+            .addField("Kod Kategori", rBody['category'], true)
         )
         res.redirect('/code/' + kod)
     });
@@ -1092,7 +1092,7 @@ module.exports = async (client) => {
         await codesSchema.deleteOne({
             code: req.params.code
         })
-        return res.redirect('/admin/codes?error=true&message=Code deleted.');
+        return res.redirect('/admin/codes?error=true&message=Kod silindi.');
     });
 
     // UPTIME
@@ -1110,7 +1110,7 @@ module.exports = async (client) => {
         await uptimeSchema.deleteOne({
             code: req.params.code
         })
-        return res.redirect('../admin/uptimes?error=true&message=Link deleted.');
+        return res.redirect('../admin/uptimes?error=true&message=Link silindi');
     });
 
     app.get("/admin/maintence", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
@@ -1129,14 +1129,14 @@ module.exports = async (client) => {
             server: config.server.id
         });
         if (bakimdata) return res.redirect('../admin/maintence?error=true&message=Maintenance mode has already been activated for this site.');
-        client.channels.cache.get(channels.webstatus).send(`<a:maintence:833375738547535913> vCodes has been switched to __maintance__ due to **${req.body.reason}**`).then(a => {
+        client.channels.cache.get(channels.webstatus).send(`site bakımda **${req.body.reason}**`).then(a => {
             new maintenceSchema({
                 server: config.server.id,
                 reason: req.body.reason,
                 bakimmsg: a.id
             }).save();
         })
-        return res.redirect('../admin/maintence?success=true&message=Maintence opened.');
+        return res.redirect('../admin/maintence?success=true&message=Bakım aç.');
     });
     app.post("/admin/unmaintence", checkMaintence, checkAdmin, checkAuth, async (req, res) => {
         const dc = require("discord.js");
@@ -1144,15 +1144,15 @@ module.exports = async (client) => {
         let bakimdata = await maintenceSchema.findOne({
             server: config.server.id
         });
-        if (!bakimdata) return res.redirect('../admin/maintence?error=true&message=The website is not in maintenance mode anyway.');
+        if (!bakimdata) return res.redirect('../admin/maintence?error=true&message=Zaten bakımda.');
         const bakimsonaerdikardesvcodes = new dc.MessageEmbed()
             .setAuthor("vcodes.xyz", client.user.avatarURL())
             .setThumbnail(client.user.avatarURL())
             .setColor("GREEN")
-            .setDescription(`<a:online:833375738785824788> vCodes are **active** again!\n[Click to redirect website](https://vcodes.xyz)`)
-            .setFooter("vCodes © All rights reserved.");
+            .setDescription(`Site tekrar aktif!\n[Website](https://vortex-botlistcodeshare.glitch.me/)`)
+            .setFooter("Vortex Botlist & CodeShare © All rights reserved.");
         await client.channels.cache.get(channels.webstatus).messages.fetch(bakimdata.bakimmsg).then(a => {
-            a.edit(`~~ <a:maintence:833375738547535913> vCodes has been switched to __maintance__ due to **${bakimdata.reason}** ~~`, bakimsonaerdikardesvcodes)
+            a.edit(`~~ site bakımda **${bakimdata.reason}** ~~`, bakimsonaerdikardesvcodes)
         })
         client.channels.cache.get(channels.webstatus).send(".").then(b => {
             b.delete({
