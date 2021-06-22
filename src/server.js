@@ -541,8 +541,8 @@ module.exports = async (client) => {
             if (!a.bot) return res.redirect("/error?code=404&message=Bot id geçersiz.");
             if (!a) return res.redirect("/error?code=404&message=Bot id geçersiz.");
             if (rBody['coowners']) {
-                if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=You can add up to 3 CO-Owners..")
-                if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=You cannot add yourself to other CO-Owners.");
+                if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=3 tane sahip ekleyebilirsiniz.")
+                if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=Diğer sahiplere kendini ekleyemezsin");
             }
             await new botsdata({
                 botID: rBody['botID'],
@@ -596,8 +596,8 @@ module.exports = async (client) => {
                 }, function(err, docs) {})
             }
             if (rBody['coowners']) {
-                if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=You can add up to 3 CO-Owners..")
-                if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=You cannot add yourself to other CO-Owners.");
+                if (String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=3 tane sahip ekleyebilirsin.")
+                if (String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=Kendini diğer sahiplere ekleyemezsin.");
                 await botsdata.findOneAndUpdate({
                     botID: rBody['botID']
                 }, {
@@ -608,8 +608,8 @@ module.exports = async (client) => {
             }
         })
         client.users.fetch(rBody['botID']).then(a => {
-            client.channels.cache.get(channels.botlog).send(`<@${req.user.id}> added **${a.tag}**`)
-            res.redirect(`?success=true&message=Your bot has been successfully added to the system.&botID=${rBody['botID']}`)
+            client.channels.cache.get(channels.botlog).send(`<@${req.user.id}> bot eklendi **${a.tag}**`)
+            res.redirect(`?success=true&message=Bot sisteme başarıyla .&botID=${rBody['botID']}`)
         })
     })
 
@@ -617,7 +617,7 @@ module.exports = async (client) => {
         let botdata = await botsdata.findOne({
             botID: req.params.botID
         });
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz.");
         if (botdata.status != "Approved") {
             if (req.user.id == botdata.ownerID || botdata.coowners.includes(req.user.id)) {
                 let coowner = new Array()
@@ -638,7 +638,7 @@ module.exports = async (client) => {
                     });
                 });
             } else {
-                res.redirect("/error?code=404&message=To edit this bot, you must be one of its owners.");
+                res.redirect("/error?code=404&message=Botu sadece sahibi düzenleyebilir");
             }
         } else {
             let coowner = new Array()
@@ -691,7 +691,7 @@ module.exports = async (client) => {
         let botdata = await botsdata.findOne({
             botID: req.params.botID
         });
-        if (!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.")
+        if (!botdata) return res.redirect("/error?code=404&message=Bot id geçersiz.")
         if (req.user.id == botdata.ownerID || botdata.coowners.includes(req.user.id)) {
             renderTemplate(res, req, "botlist/bot-edit.ejs", {
                 req,
