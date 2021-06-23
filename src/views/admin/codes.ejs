@@ -5,8 +5,8 @@
         <div class="page-header">
             <nav class="breadcrumb-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bot List</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Codes</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bot Listesi</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Kodlar</a></li>
                 </ol>
             </nav>
         </div>
@@ -18,10 +18,10 @@
                     <table id="default-ordering" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Code Name</th>
-                                <th>Code</th>
-                                <th>Code Category</th>
-                                <th class="text-center dt-no-sorting">Action</th>
+                                <th>Kod İsmi</th>
+                                <th>Kod</th>
+                                <th>Kod Kategori</th>
+                                <th class="text-center dt-no-sorting">İşlem</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,17 +32,17 @@
                                 <td><%= b.codeCategory %></td>
                             
                                 <td class="text-center">
-                                    <button onclick="window.location.href='/admin/editcode/<%= b.code %>'" class="btn btn-success btn-sm">Edit</button>
-                                    <button onclick="deletequest('<%= b.code %>')" class="btn btn-danger btn-sm">Delete</button>
+                                    <button onclick="window.location.href='/admin/editcode/<%= b.code %>'" class="btn btn-success btn-sm">Düzenle</button>
+                                    <button onclick="deletequest('<%= b.code %>')" class="btn btn-danger btn-sm">Sil</button>
                                 </td>
                             </tr>
                             <% }) %>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Code Name</th>
-                                <th>Code</th>
-                                <th>Code Category</th>
+                                <th>Kod İsmi</th>
+                                <th>Kod</th>
+                                <th>Kod Kategori</th>
                                 <th class="invisible"></th>
                             </tr>
                         </tfoot>
@@ -53,20 +53,20 @@
         <script>
             function deletequest(uptimecode) {
 Swal.fire({
-  title: 'Are you sure?',
-  text: "Are you sure you want to permanently delete the link you selected?",
+  title: 'Emin misin?',
+  text: "Silmek isteğine emin misin?",
   icon: 'warning',
   showCancelButton: true,
-  confirmButtonText: 'Yes, delete it!',
-  cancelButtonText: 'No, cancel it!',
+  confirmButtonText: 'Evet Sil',
+  cancelButtonText: 'Hayır İptal Et',
   reverseButtons: true
 }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/admin/deletecode/'+uptimecode;
   } else {
     Swal.fire(
-      'Canceled..',
-      'Link deletion from the uptime system has been canceled.',
+      'İptal Edildi..',
+      'İşlem iptal edildi.',
       'error'
     )
   }
@@ -76,10 +76,10 @@ Swal.fire({
             if(urlParams.has('success') && urlParams.get('success')){
             Swal.fire({
              icon: 'success',
-             title: 'Succesfull...',
+             title: 'Başarılı...',
              closeOnConfirm: false,
              text: urlParams.get('message'),
-             footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+             footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
             }).then((result) => {
           if (result.isConfirmed) {
             window.location.href = '/admin/codes';
@@ -91,7 +91,7 @@ Swal.fire({
              icon: 'error',
              title: 'Oops...',
              text: urlParams.get('message'),
-             footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+             footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
             }).then((result) => {
           if (result.isConfirmed) {
             window.location.href = '/admin/codes';
