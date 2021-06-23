@@ -10,7 +10,7 @@
           <input type="hidden" value="<%= _token %>" name="_token" id="_token">
         <div class="form-row mb-4">
             <div class="form-group col-md-4">
-                <label for="inputEmail4">Reason<span style="color:red">*</span></label>
+                <label for="inputEmail4">Sebep<span style="color:red">*</span></label>
                 <input type="text" class="form-control" id="reason" name="reason" placeholder="" required>
             </div>  
         </div>
@@ -31,10 +31,10 @@
     if(urlParams.has('success') && urlParams.get('success')){
     Swal.fire({
      icon: 'success',
-     title: 'Succesfull...',
+     title: 'Başarılı...',
      closeOnConfirm: false,
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/admin/maintence';
@@ -46,7 +46,7 @@
      icon: 'error',
      title: 'Oops...',
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/admin/maintence';
