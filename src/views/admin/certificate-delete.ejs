@@ -6,8 +6,8 @@
       <input type="hidden" value="<%= _token %>" name="_token" id="_token">
 
         <div class="form-group mb-4">
-            <label for="formGroupExampleInput">Reason</label>
-            <input type="text" class="form-control" id="reason" name="reason" placeholder="Bla bla bla" required>
+            <label for="formGroupExampleInput">Sebep</label>
+            <input type="text" class="form-control" id="reason" name="reason" placeholder="Sebep" gerekli>
         </div>
         <input type="submit" name="time" class="btn btn-primary" value="Submit">
     </form>
@@ -18,10 +18,10 @@
 if(urlParams.has('success') && urlParams.get('success')){
 Swal.fire({
  icon: 'success',
- title: 'Succesfull...',
+ title: 'Başarılı...',
  closeOnConfirm: false,
  text: urlParams.get('message'),
- footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+ footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
 }).then((result) => {
 if (result.isConfirmed) {
 window.location.href = '/admin/certified-bots';
@@ -33,7 +33,7 @@ Swal.fire({
  icon: 'error',
  title: 'Oops...',
  text: urlParams.get('message'),
- footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+ footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
 }).then((result) => {
 if (result.isConfirmed) {
 window.location.href = '/admin/certified-bots';

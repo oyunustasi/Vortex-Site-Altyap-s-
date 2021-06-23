@@ -5,8 +5,8 @@
         <div class="page-header">
             <nav class="breadcrumb-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bot List</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Certificate Apps </a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bot Listesi</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Sertifika İşlemleri </a></li>
                 </ol>
             </nav>
         </div>
@@ -19,10 +19,10 @@
                         <thead>
                             <tr>
                                 <th>Bot ID</th>
-                                <th>Future</th>
-                                <th>100+ servers?</th>
-                                <th>Invite</th>
-                                <th class="text-center dt-no-sorting">Action</th>
+                                <th>Gelecek</th>
+                                <th>100+ sunucuda mı?</th>
+                                <th>Davet Et</th>
+                                <th class="text-center dt-no-sorting">İşlem</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,8 +35,8 @@
                                     <button onclick="window.location.href='https://discord.com/api/oauth2/authorize?client_id=<%= b.botID %>&permissions=8&scope=bot" class="btn btn-info btn-sm">Perm 8</button> </td>
                                
                                 <td class="text-center">
-                                        <button onclick="window.location.href='/admin/certificate/give/<%= b.botID %>'" class="btn btn-success btn-sm">Give Certificate</button>
-                                        <button onclick="window.location.href='/admin/certificate/delete/<%= b.botID %>'" class="btn btn-danger btn-sm">Delete Certificate</button>
+                                        <button onclick="window.location.href='/admin/certificate/give/<%= b.botID %>'" class="btn btn-success btn-sm">Sertifika Ver</button>
+                                        <button onclick="window.location.href='/admin/certificate/delete/<%= b.botID %>'" class="btn btn-danger btn-sm">Sertifika Sil</button>
                                     </td>
                             </tr>
                             <% }) %>
@@ -44,9 +44,9 @@
                         <tfoot>
                             <tr>
                                 <th>Bot ID</th>
-                                <th>Future</th>
-                                <th>100+ servers?</th>
-                                <th>Invite</th>
+                                <th>Gelecek</th>
+                                <th>100+ sunucuda mı?</th>
+                                <th>Davet Et</th>
                                 <th class="invisible"></th>
                             </tr>
                         </tfoot>
@@ -59,10 +59,10 @@
         if(urlParams.has('success') && urlParams.get('success')){
         Swal.fire({
          icon: 'success',
-         title: 'Succesfull...',
+         title: 'Başarılı...',
          closeOnConfirm: false,
          text: urlParams.get('message'),
-         footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+         footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
         }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = '/admin/certificate-apps';
@@ -74,7 +74,7 @@
          icon: 'error',
          title: 'Oops...',
          text: urlParams.get('message'),
-         footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+         footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
         }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = '/admin/certificate-apps';

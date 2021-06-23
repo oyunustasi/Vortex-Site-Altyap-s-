@@ -5,8 +5,8 @@
         <div class="page-header">
             <nav class="breadcrumb-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bot List</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Certified Bots</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bot Listesi</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Sertifikalı Botlar</a></li>
                 </ol>
             </nav>
         </div>
@@ -18,11 +18,11 @@
                     <table id="default-ordering" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Bot Name</th>
-                                <th>Owner</th>
+                                <th>Bot İsmi</th>
+                                <th>Sahip</th>
                                 <th>Prefix</th>
-                                <th>Invite</th>
-                                <th class="text-center dt-no-sorting">Action</th>
+                                <th>Davet Et</th>
+                                <th class="text-center dt-no-sorting">İşlem</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,15 +34,15 @@
                                 <td><button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=<%= row.botID %>&permissions=0&scope=bot'" class="btn btn-primary btn-sm">Perm 0</button>
                                     <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=<%= row.botID %>&permissions=8&scope=bot" class="btn btn-info btn-sm">Perm 8</button> </td>
                                 <td class="text-center">
-                                        <button onclick="window.location.href='/admin/certificate/delete/<%= row.botID %>'" class="btn btn-danger btn-sm">Delete Certificate</button>
+                                        <button onclick="window.location.href='/admin/certificate/delete/<%= row.botID %>'" class="btn btn-danger btn-sm">Sertifika Sil</button>
                                     </td>
                             </tr>
                             <% }) %>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Bot Name</th>
-                                <th>Owner</th>
+                                <th>Bot İsmi</th>
+                                <th>Sahip</th>
                                 <th>Prefix</th>
                                 <th>Invite</th>
                                 <th class="invisible"></th>
