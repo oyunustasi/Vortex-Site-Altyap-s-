@@ -14,12 +14,12 @@
             </div>
             <h3 translate="no" class="has-text-white is-size-3" style="margin-bottom: 10px;"><%= botdata.username %><span class="is-size-4" style="opacity: 0.7;">#<%= botdata.discrim %></span></h3>
             <% if(user) { %>
-            <p class="has-text-white">You can support the bot by voting this bot.</p>
-            <p class="text-muted">You can vote every 12 hours.</p>
+            <p class="has-text-white">Bu bota oy vererek bota destek olabilirsiniz.</p>
+            <p class="text-muted">12 saatte bir defa oy verebilirsin.</p>
             <form id="myVote" method="POST">
               <input type="hidden" value="<%= _token %>" name="_token" id="_token">
 
-            <button type="submit" onclick="myVote()" id="voteBTN" class="btn btn-vote"><i class="fad fa-thumbs-up"></i>&nbsp;Confirm to Vote</button>
+            <button type="submit" onclick="myVote()" id="voteBTN" class="btn btn-vote"><i class="fad fa-thumbs-up"></i>&nbsp;Oy Ver</button>
             </form>
             <% } else { %>
             <script>
@@ -34,9 +34,9 @@
                     allowOutsideClick: false,
                     showConfirmButton: true,
                     confirmButtonText:
-    '<i class="fad fa-sign-in"></i> Login',
+    '<i class="fad fa-sign-in"></i> Giriş Yap',
                     focusConfirm: true,
-                    text: "You must be logged in to vote.",
+                    text: "Oy verebilmek için giriş yapmalısın.",
                 }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/login';
@@ -48,7 +48,7 @@
             <br>
         </div>
     </div>
-    <button onclick="location.href='/bot/<%=botdata.botID%>'" class="btn btn-back"><i class="fad fa-chevron-left"></i >&nbsp;Back to <%= botdata.username %></button>
+    <button onclick="location.href='/bot/<%=botdata.botID%>'" class="btn btn-back"><i class="fad fa-chevron-left"></i >&nbsp;Geri git <%= botdata.username %></button>
     </center>
 </div>
 
@@ -61,10 +61,10 @@
     if(urlParams.has('success') && urlParams.get('success')){
     Swal.fire({
      icon: 'success',
-     title: 'Successful...',
+     title: 'Başarılı...',
      closeOnConfirm: false,
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = `/bot/<%= botdata.botID %>`;
@@ -76,7 +76,7 @@
      icon: 'error',
      title: 'Oops...',
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = `/bot/${req.params.botID}`;

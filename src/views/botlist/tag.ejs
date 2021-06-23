@@ -4,8 +4,8 @@
 
     <div class="container">
         <div class="column">
-            <p class="has-text-white title is-large" style="text-transform: capitalize;"><i class="fa fa-tag has-text-info"></i>&nbsp;<%= req.params.tag %> Bots</p>
-            <p class="content has-text-white" style="margin-top: -20px;">They are ranked according to the votes they received.</p>
+            <p class="has-text-white title is-large" style="text-transform: capitalize;"><i class="fa fa-tag has-text-info"></i>&nbsp;<%= req.params.tag %> Botlar</p>
+            <p class="content has-text-white" style="margin-top: -20px;">Aldıkları oylara göre sıralanıyorlar..</p>
           </div>
     <div class="columns is-multiline is-desktop is-variable is-7 mt-5 pt-5">
 
@@ -25,12 +25,12 @@
           </div>
           <div class="card-body">
            <div class="is-pulled-right mt-vcodes mt-1">
-                <span data-tooltip="Total Votes" data-tooltip-location="left" class="badge badge-stats mb-vcodes mt-1 w-100"><i class="fad fa-chevron-up"></i>&nbsp;<%= a.votes || "0" %></span>
-                <span data-tooltip="Server Count" data-tooltip-location="left" class="badge badge-stats mt-1 w-100"><i class="fad fa-server"></i>&nbsp;<%= a.serverCount || "N/A" %></span>
+                <span data-tooltip="Toplam Oy" data-tooltip-location="left" class="badge badge-stats mb-vcodes mt-1 w-100"><i class="fad fa-chevron-up"></i>&nbsp;<%= a.votes || "0" %></span>
+                <span data-tooltip="Sunucu Sayısı" data-tooltip-location="left" class="badge badge-stats mt-1 w-100"><i class="fad fa-server"></i>&nbsp;<%= a.serverCount || "N/A" %></span>
               </div>
             <h4 translate="no" class="card-title"><%= a.username %>
-            <% if(a.certificate === "Certified") { %>
-              <span data-tooltip="Verified Bot" data-tooltip-location="top"><i class="fad fa-badge-check has-text-success"></i></span>
+            <% if(a.certificate === "Certificated") { %>
+              <span data-tooltip="Doğrulanmış Bot" data-tooltip-location="top"><i class="fad fa-badge-check has-text-success"></i></span>
             <% } %>
             </h4>
             <p translate="no" class="card-text vCodesbotDesc"><%= a.shortDesc %></p>
