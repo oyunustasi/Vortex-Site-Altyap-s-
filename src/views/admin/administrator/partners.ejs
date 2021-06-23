@@ -10,23 +10,23 @@
                 <input type="text" class="form-control" id="icon" name="icon" placeholder="" required>
             </div>
             <div class="form-group col-md-4">
-                <label for="inputEmail4">Name<span style="color:red">*</span></label>
+                <label for="inputEmail4">İsim<span style="color:red">*</span></label>
                 <input type="text" class="form-control" id="serverName" name="serverName" placeholder="" required>
             </div>
             <div class="form-group col-md-4">
-                <label for="inputEmail4">Description<span style="color:red">*</span></label>
+                <label for="inputEmail4">Açıklama<span style="color:red">*</span></label>
               <textarea style="width: 100%;" type="text" class="form-control" id="partnerDesc" name="partnerDesc" placeholder="" required></textarea>
             </div>
          </div>
         <div class="form-group mb-4">
-          <label for="inputEmail4">Owner ID<span style="color:red">*</span></label>
+          <label for="inputEmail4">Kurucu ID<span style="color:red">*</span></label>
           <input type="text" class="form-control" id="ownerID" name="ownerID" maxlength="100" placeholder="" required>
         </div>
         <div class="form-group">
           <label for="inputEmail4">Website<span style="color:red">*</span></label>
           <input type="text" class="form-control" id="Website" name="Website" maxlength="100" placeholder="" required>
       </div>
-      <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-save"></i> Submit</button>
+      <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-save"></i> Gönder</button>
     </form>
 
 <div class="row layout-top-spacing" id="cancel-row">
@@ -39,10 +39,10 @@
     if(urlParams.has('success') && urlParams.get('success')){
     Swal.fire({
      icon: 'success',
-     title: 'Succesfull...',
+     title: 'Başarılı...',
      closeOnConfirm: false,
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/admin/partners';
@@ -54,7 +54,7 @@
      icon: 'error',
      title: 'Oops...',
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/admin/partners';
