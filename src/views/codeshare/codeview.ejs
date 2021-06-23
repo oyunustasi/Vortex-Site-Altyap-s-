@@ -69,22 +69,22 @@
 
               <div class="is-flex mt-1">
                 <div class="box-2-p"><i class="mt-1 fad fa-terminal"></i></div>
-                <p class="box-2">Code: <%= docs.code %> </p>
+                <p class="box-2">Kod: <%= docs.code %> </p>
               </div>
               <div class="is-flex mt-1">
                 <div class="box-2-p"><i class="mt-1 fad fa-text"></i></div>
-                <p class="box-2">Code Name: <%= docs.codeName %> </p>
+                <p class="box-2">Kod İsmi: <%= docs.codeName %> </p>
               </div>
               <div class="is-flex mt-1">
                 <div class="box-2-p"><i class="mt-1 fad fa-book"></i></div>
-                <p class="box-2">Code Category: <%= docs.codeCategory %> </p>
+                <p class="box-2">Kod Kategori: <%= docs.codeCategory %> </p>
               </div>
         </div>
       </div>
     </div>
     <div class="col-xl-8 order-xl-1">
         <% if(docs.main) {%>
-            <span style="float: right;cursor: pointer;transition: all 0.1s;font-size: 20px;" data-tooltip="Click and copy to clipboard" data-tooltip-location="top"> 
+            <span style="float: right;cursor: pointer;transition: all 0.1s;font-size: 20px;" data-tooltip="Kopyala" data-tooltip-location="top"> 
                 <a class="btn copybtn" onclick="copy('main')"><i class="fad fa-copy has-text-white"></i></a>
                 </span>
             <pre style="background-color:#282c34; margin-left:15px; width:100%;display: block!important;"><code id="main"><%=docs.main%></code></pre>
@@ -107,7 +107,7 @@
 		  $temp.val($("#"+element).text()).select();
 		  document.execCommand("copy");
 		  $temp.remove();
-          Swal.fire("Successful", "Successfully code copied to clipboard.", success)
+          Swal.fire("Başarılı", "Kopyalandı.", success)
 		}
     </script>
 <%- include('../parts/foot') %>

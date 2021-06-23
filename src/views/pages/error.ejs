@@ -1,9 +1,9 @@
 <%- include('../parts/head', {bot, user,path}) %>
 <%
-var url = new URL(`https://vcodes.xyz/error?code=${req.query.code}&message=${req.query.message}`);
+var url = new URL(`https://vortex-botlistcodeshare.glitch.me/error?code=${req.query.code}&message=${req.query.message}`);
 var params = new URLSearchParams(url.search);
 %>
-<title>Error <%= params.get('code')%> - vCodes</title>
+<title>Error <%= params.get('code')%> - Vortex Botlist & CodeShare</title>
 </head>
 <style>
 .four_zero_four_bg{
@@ -32,8 +32,8 @@ var params = new URLSearchParams(url.search);
 		<h3 class="h2 has-text-white">
             <%= params.get('message') %>
 		</h3>		
-		<a href="/" class="btn btn-discord"><i class="fad fa-home"></i> Go to Home</a>
-		<a href="/dc" class="btn btn-discord"><i class="fab fa-discord"></i> Join our Discord</a>
+		<a href="/" class="btn btn-discord"><i class="fad fa-home"></i> Ana Menü</a>
+		<a href="/dc" class="btn btn-discord"><i class="fab fa-discord"></i> Discord Katıl</a>
 	</div>
 		</div>
 		</div>
@@ -45,7 +45,7 @@ var params = new URLSearchParams(url.search);
 
 <center>
 <% if(params.get('code') == "200") {%>
-    <p class="has-text-white">You are authorized? <a class="btn btn-discord" href="/login">Login</a></p>
+    <p class="has-text-white">Yetkili misin? <a class="btn btn-discord" href="/login">Giriş Yap</a></p>
 <% } %>
 </center>
 
