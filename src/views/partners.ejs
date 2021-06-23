@@ -28,7 +28,7 @@
                 <a data-tooltip="Owner" href="/user/<%= a.ownerID%>"data-tooltip-location="left" class="badge badge-stats mb-vcodes mt-1 w-100"><span class="partner-ownerName"><i class="fad fa-user-crown"></i>&nbsp;&nbsp;<%= bot.users.cache.get(a.ownerID) ? bot.users.cache.get(a.ownerID).username : "undefined" %>#<%= bot.users.cache.get(a.ownerID) ? bot.users.cache.get(a.ownerID).discriminator : "0000" %></span></a>
               </div>
             <h4 translate="no" class="card-title"><%= a.serverName %>
-              <span data-tooltip="Verified Server" data-tooltip-location="top"><i class="fad fa-badge-check has-text-success"></i></span>
+              <span data-tooltip="Doğrulanmış Sunucu" data-tooltip-location="top"><i class="fad fa-badge-check has-text-success"></i></span>
             </h4>
             <p translate="no" class="card-text vCodesbotDesc"><%= a.description %></p>
           </div>
