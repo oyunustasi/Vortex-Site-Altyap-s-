@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
       let Embed = new Discord.MessageEmbed()
-                            .addField("Code","```js\n" + code + "```")
+                            .addField("Kod","```js\n" + code + "```")
                             .setDescription("```js\n" + clean(evaled) + "```")
 if (Embed.description.length >= 2048)
       Embed.description = Embed.description.substr(0, 2042) + "```...";

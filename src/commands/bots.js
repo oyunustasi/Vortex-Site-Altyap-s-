@@ -6,9 +6,9 @@ module.exports.run = async (client,message,args) => {
    let bots = await x.filter(a => a.ownerID == message.author.id || a.coowners.includes(message.author.id))
    const embed = new Discord.MessageEmbed()
    .setAuthor(message.author.tag, message.author.avatarURL({dynamic: true}))
-   .setDescription(`**Total ${bots.length} bots found.**`)
+   .setDescription(`**Toplam ${bots.length} bot bulunuyor.**`)
    .setColor("#7289da")
-   .addField("Bots", `${!bots ? "" : bots.map(a => "<@"+a.botID+">").join("\n")}`, true)
+   .addField("Botlar", `${!bots ? "" : bots.map(a => "<@"+a.botID+">").join("\n")}`, true)
    message.channel.send(embed)
 };
 exports.conf = {
