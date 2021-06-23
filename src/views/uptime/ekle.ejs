@@ -9,10 +9,10 @@
   <div class="form-group">
     <input type="hidden" value="<%= _token %>" name="_token" id="_token">
 
-    <label for="komutlar">Your website link;</label>
+    <label for="komutlar">Linkin;</label>
     <textarea type="text" class="form-control" id="link" name="link"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Gönder</button>
 </form>
 </div>
 <br><br><br><br><br><br>
@@ -21,10 +21,10 @@
     if(urlParams.has('success') && urlParams.get('success')){
     Swal.fire({
      icon: 'success',
-     title: 'Succesfull...',
+     title: 'Başarılı...',
      closeOnConfirm: false,
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/uptime/links';
@@ -36,7 +36,7 @@
      icon: 'error',
      title: 'Oops...',
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/uptime/add';
