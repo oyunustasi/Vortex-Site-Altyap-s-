@@ -1,5 +1,5 @@
 <%- include('../parts/head', {bot, user, path}) %>
-<title><%= botdata.username %> | Discord Bots</title>
+<title><%= botdata.username %> | Discord Botlar</title>
 <head>
     <meta property="og:title" content="<%= botdata.username %>">
     <meta property="og:description" content="<%= botdata.shortDesc %>">
@@ -10,7 +10,7 @@
     <% if(botdata.status != "Approved") {%>
         <br><br>
         <div class="container alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa fa-exclamation-circle"></i> This bot is <strong>not approved</strong> yet.
+            <i class="fa fa-exclamation-circle"></i> onaylanmamış <strong>botlar</strong> bulunuyor.
             <br>And therefore it will not appear in the bots section, and also the bot owners will not be able to access the external bot.
           </div>
     <% } %>

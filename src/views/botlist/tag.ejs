@@ -36,8 +36,8 @@
             <p translate="no" class="card-text vCodesbotDesc"><%= a.shortDesc %></p>
           </div>
           <div class="card-footer">
-            <a href="/bot/<%=a.botID%>" class="btn btn-tag btn-bot">View</a>
-            <a href="https://discord.com/oauth2/authorize?client_id=<%=a.botID%>&scope=bot&permissions=8" class="btn btn-tag btn-bot">Invite</a>
+            <a href="/bot/<%=a.botID%>" class="btn btn-tag btn-bot">Görüntüle</a>
+            <a href="https://discord.com/oauth2/authorize?client_id=<%=a.botID%>&scope=bot&permissions=8" class="btn btn-tag btn-bot">Davet Et</a>
           </div>
         </div>
         </div>
@@ -51,7 +51,7 @@
 <%
 if (page != 1) {
 %>
-<a data-tooltip="Previous Page" data-tooltip-location="top" href="/bots?page=<%= page-1; %>"  class="btn" style="padding: 14px;background-color: #242526; color: white;" >
+<a data-tooltip="Önceki Sayfa" data-tooltip-location="top" href="/bots?page=<%= page-1; %>"  class="btn" style="padding: 14px;background-color: #242526; color: white;" >
     <i class="fad fa-arrow-left"></i>
 </a>
   <% } else { %>
@@ -59,13 +59,13 @@ if (page != 1) {
         <i class="fad fa-arrow-left"></i>
     </a>
   <% } %>
-  <a data-tooltip="Current Page" data-tooltip-location="top"class="btn" style="background-color: #242526; color: white;">
+  <a data-tooltip="Mevcut Sayfa" data-tooltip-location="top"class="btn" style="background-color: #242526; color: white;">
     <%= page %>
   </a>
   <%
   if (page != Math.ceil(data.length / 6) && data.length > 0) {
   %>
-  <a data-tooltip="Next Page" data-tooltip-location="top" href="/bots?tag=<%=req.query.tag%>&page=<%= Number(page)+ Number(1); %>"  class="btn" style="padding: 14px;background-color: #242526; color: white;" >
+  <a data-tooltip="Sonraki Sayfa" data-tooltip-location="top" href="/bots?tag=<%=req.query.tag%>&page=<%= Number(page)+ Number(1); %>"  class="btn" style="padding: 14px;background-color: #242526; color: white;" >
     <i class="fad fa-arrow-right"></i>
 </a>
   <% } %>
@@ -76,10 +76,10 @@ if (page != 1) {
     if(urlParams.has('success') && urlParams.get('success')){
     Swal.fire({
      icon: 'success',
-     title: 'Succesfull...',
+     title: 'Başarılı...',
      closeOnConfirm: false,
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = `/bot/${urlParams.get('botID')}`;
@@ -91,7 +91,7 @@ if (page != 1) {
      icon: 'error',
      title: 'Oops...',
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy vCodes.xyz - All right reserved.'
+     footer: 'Copyright 2021 &copy Vortex Botlist & CodeShare - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/addbot';
