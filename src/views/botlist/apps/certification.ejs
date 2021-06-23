@@ -1,5 +1,5 @@
 <%- include('../../parts/head', {bot, user, path}) %>
-<title>Certification | Discord Bots</title>
+<title>Sertifika | Discord Botlar</title>
 <div class="container px-3 mt-2 pt-5">
     <div class="container px-3 content is-widescreen pt-5">
         <div class="bg-vote-vcodes pt-5">
@@ -17,23 +17,23 @@
             <p class="has-text-white">&raquo&raquo Sertifika Avantajları</p>
             <p class="text-muted">
                 <br>&raquo&raquo Botlar İçin
-                <br>&raquo Sunucuda özel rol.
-                <br>&raquoA Sitede özel rol (                <span data-tooltip="<%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_bot).name%>" data-tooltip-location="top"> 
+                <br>&raquo Discord sunucuda özel rol alıyor.
+                <br>&raquoA Sitede botun profilinde (                <span data-tooltip="<%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_bot).name%>" data-tooltip-location="top"> 
                     <i class="fad fa-badge-check has-text-primary" style="font-size: 20px;"></i>
-                    </span>). Sertifikalı botlar bölümünde gösteriliyor.
+                    </span>) özel rozet gözüküyor.
                 
-                <br><br>&raquo&raquo Sahipleri İcin
+                <br><br>&raquo&raquo Sahipleri İçin
                 
-                <br>&raquo A special role on our Discord server to let people know that you are certified.
-                <br>&raquo A special badge(                <span data-tooltip="<%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_developer).name%>" data-tooltip-location="top"> 
+                <br>&raquo Discord sunucuda özel rol alıyor.
+                <br>&raquo Sitede sahibin profilinde (                <span data-tooltip="<%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_developer).name%>" data-tooltip-location="top"> 
                     <i class="fad fa-badge-check" style="color: <%=bot.guilds.cache.get(config.server.id).roles.cache.get(roles.botlist.certified_developer).hexColor%>;font-size: 20px;"></i>
-                    </span>) on your profile to let people know that you are certified.
+                    </span>) özel rozet gözüküyor.
                 </p>
             <br>
         </div>
     </div>
     <center>
-    <button onclick="location.href='/certification/apply'" class="btn btn-back"><i class="fad fa-check"></i>&nbsp;Apply your bot</button>
+    <button onclick="location.href='/certification/apply'" class="btn btn-back"><i class="fad fa-check"></i>&nbsp;Sertifika İste</button>
     </center>
 </div>
 
