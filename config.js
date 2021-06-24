@@ -4,7 +4,7 @@ module.exports = {
     prefix: "-",
     owners: ["552154968426283024"],
     mongourl:
-      "mongodb+srv://oyun_ustasi:yunus@botlistcodeshare.xgdqp.mongodb.net/BotlistCodeShare?retryWrites=true&w=majority"
+      "mongodb+srv://oyun_ustasi:yunusctn34@botlistcodeshare.xgdqp.mongodb.net/BotlistCodeShare?retryWrites=true&w=majority"
   },
 
   website: {
