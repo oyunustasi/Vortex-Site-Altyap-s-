@@ -1577,7 +1577,7 @@ module.exports = async client => {
       );
       client.channels.cache.get(channels.codelog).send(
         new Discord.MessageEmbed()
-          .setTitle("Kod düzenlendi")
+          .setTitle("Kod Eklendi")
           .setColor("GREEN")
           .setFooter("Vortex Botlist & CodeShare")
           .setDescription(
