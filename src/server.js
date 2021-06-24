@@ -1517,7 +1517,7 @@ module.exports = async client => {
               req.user.username
             }](https://vortex-botlistcodeshare.glitch.me/user/${
               req.user.id
-            }) adlı kullanıcı **${rBody["codename"]}** adlı komutu ekledi.`
+            }) adlı kullanıcı **${rBody["codename"]}** adlı kodu ekledi.`
           )
           .addField(
             "Kod Link",
@@ -1585,7 +1585,7 @@ module.exports = async client => {
               req.user.username
             }](https://vortex-botlistcodeshare.glitch.me/user/${
               req.user.id
-            }) adlı kullanıcı **${rBody["codename"]}** adlı komutu ekledi.`
+            }) adlı kullanıcı **${rBody["codename"]}** adlı kodu ekledi.`
           )
           .addField(
             "Kod Link",
