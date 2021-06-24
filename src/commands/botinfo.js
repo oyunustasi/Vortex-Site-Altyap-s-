@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args) => {
     .setThumbnail(b.avatar)
     .setAuthor(b.username + "#" + b.discrim, b.avatar)
     .setDescription(
-      "**[Vote for the bot named " +
+      "**[Oy Ver " +
         b.username +
         "#" +
         b.discrim +

@@ -1006,7 +1006,9 @@ module.exports = async client => {
     client.users.fetch(req.params.botID).then(a => {
       client.channels.cache
         .get(channels.botlog)
-        .send(`<@${req.user.id}> düzenlendi **${a.tag}**`);
+        .send(
+          `<@${req.user.id}> adlı kullanıcı **${a.tag}** adlı botu düzenledi`
+        );
       res.redirect(
         `?success=true&message=Bot başarıyla düzenlendi.&botID=${req.params.botID}`
       );
