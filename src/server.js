@@ -1511,13 +1511,13 @@ module.exports = async client => {
         new Discord.MessageEmbed()
           .setTitle("Kod Eklendi")
           .setColor("GREEN")
-          .setFooter(config.footer)
+          .setFooter("Vortex Botlist & CodeShare")
           .setDescription(
             `[${
               req.user.username
             }](https://vortex-botlistcodeshare.glitch.me/user/${
               req.user.id
-            }) adlı kullanıcı ${rBody["codename"]} adlı kodu siteye ekledi.`
+            }) adlı kullanıcı **${rBody["codename"]}** adlı kodu siteye ekledi.`
           )
           .addField(
             "Kod Link",
@@ -1579,7 +1579,7 @@ module.exports = async client => {
         new Discord.MessageEmbed()
           .setTitle("Kod düzenlendi")
           .setColor("GREEN")
-          .setFooter(config.footer)
+          .setFooter("Vortex Botlist & CodeShare")
           .setDescription(
             `[${
               req.user.username
